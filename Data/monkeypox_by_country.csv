@@ -1,4 +1,4 @@
-Country,Code,CO2Emissions,YearlyChange,Percapita,Population,LifeExpectancy
+Country,Code,Active,YearlyChange,Percapita,Population,LifeExpectancy
 Afghanistan,AFG,9900004,7.13,0.28,35383032,63.763
 Albania,ALB,5208319,4.45,1.8,2886438,78.194
 Algeria,DZA,156220560,0.17,3.85,40551392,76.298
