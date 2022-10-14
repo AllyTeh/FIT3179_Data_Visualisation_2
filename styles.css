@@ -1,8 +1,264 @@
-#symbol_map {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
-	right: 100px;
-	/*height: 1000px;
-	width: 800px;*/
+body {
+    text-align: justify;
+    background-color: #f4f7fc;
+    font-family: 'Roboto', 'sans-serif';
+    color: #122944;
+}
+
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/*
+Add transition to containers so they can push in and out.
+*/
+#layout,
+#layout {
+    position: relative;
+    left: 0;
+    padding-left: 0;
+}
+    #layout.active #menu {
+        left: 150px;
+        width: 150px;
+    }
+
+    #layout.active .menu-link {
+        left: 150px;
+    }
+
+.content {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 1000px;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+}
+
+.section-header{
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 0px;
+    border-radius: 0.2em;
+}
+.section-header h3{
+    font-weight: 500;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.section-header p{
+    margin-top: 0;
+}
+
+.header {
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 2.5em 1em 0;
+ }
+    .header h1 {
+        margin: 0.2em 0;
+        font-size: 3em;
+        font-weight: 500;
+    }
+     .header h2 {
+        font-size: 0.8em;
+        font-weight: 300;
+        color: black;
+        padding: 0;
+        margin-top: 0;
+    }
+.header-container{
+    display: flex;
+}
+.header-container img{
+    align-self: center;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.info-cards{
+    list-style: none;
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+.row-1{
+    display: flex;
+    justify-content: center;
+}
+
+.slide{
+    color: grey;
+}
+
+.slide:hover{
+    color:#86bafd;
+    transition: all .2s ease-in;
+}
+
+.list-item{
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    margin: 0;
+    width: 330px;
+    height: 100px;
+    border-radius: 0.2em;
+    background-color: #ffffff;
+    transition: all .2s ease-in;
+}
+
+.list-item:hover{
+   border-left: 10px solid #86bafd;
+   transition: all .2s ease-in;
+}
+
+.list-item2{
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    margin: 0 1em 0em;
+    width: 330px;
+    height: 100px;
+    border-radius: 0.2em;
+    background-color: #ffffff;
+    transition: all .2s ease-in;
+}
+
+.list-item2:hover{
+    border-left: 10px solid #86bafd;
+    transition: all .2s ease-in;
+ }
+
+.list-item-content{
+    margin: 25px 0 0 25px;
+    display: flex;
+}
+
+.card-title{
+    font-weight: 300;
+    padding-left: 10px;
+}
+
+.card-desc{
+    font-size: 1.5em;
+    font-weight: 800;
+    padding-left: 10px;
+}
+
+.cases_state{
+    width: 100%;
+    height: 500px;
+}
+
+.daily-cases-section{
+    margin-top: 1em;
+}
+
+.vis-wrapper{
+    width: 100%;
+    height: 300px;
+}
+
+.vis-wrapper-2{
+    width: 100%;
+    height: 100px;
+}
+
+.vis-title{
+    font-size: 1.5em;
+    font-weight: 800;
+    margin: 1em 0.5em 0.5em 0;
+}
+
+.vaccination-section{
+    margin-top: 1em;
+}
+
+.deaths-section{
+    margin-top: 1em;
+}
+
+.vax-info-section{
+    display: flex;
+}
+
+.waffle_text{
+    margin-top: 4em;
+}
+
+#deaths_radial{
+    margin-left: 4em
+}
+
+.bolds{
+    font-size: 1.2em;
+}
+
+.death-wrapper{
+    margin-top: 2em
+}
+/* -- Responsive Styles (Media Queries) ------------------------------------- */
+
+/*
+Hides the menu at `48em`, but modify this based on your app's needs.
+*/
+@media (min-width: 48em) {
+
+    .header,
+    .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    #layout {
+        padding-left: 150px; /* left col width "#menu" */
+        left: 0;
+    }
+    #menu {
+        left: 150px;
+    }
+
+    .menu-link {
+        position: fixed;
+        left: 150px;
+        display: none;
+    }
+
+    #layout.active .menu-link {
+        left: 150px;
+    }
+}
+
+@media (max-width: 48em) {
+    /* Only apply this when the window is small. Otherwise, the following
+    case results in extra padding on the left:
+        * Make the window small.
+        * Tap the menu to trigger the active state.
+        * Make the window large again.
+    */
+    #layout.active {
+        position: relative;
+        left: 150px;
+    }
+    .row-1{
+        flex-direction: column;
+    }
+    .list-item2{
+        margin-left: 0;
+        margin-bottom: 0;
+        margin-top: 10px;
+        width: 330px;
+        height: 100px;
+        border-radius: 0.2em;
+        box-shadow: 5px 10px 10px #ccc;
+        background-color: white;
+    }
+    .list-item{
+        margin-top: 10px;
+        width: 330px;
+        height: 100px;
+        border-radius: 0.2em;
+        box-shadow: 5px 10px 10px #ccc;
+        background-color: white;
+    }
 }

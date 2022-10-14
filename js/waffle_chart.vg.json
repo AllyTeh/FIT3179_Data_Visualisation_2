@@ -1,0 +1,73 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Stock prices of four large companies as a small multiples of area charts.",
+    "width": 300,
+    "height": 300,
+    "data": {
+      "url": "https://raw.githubusercontent.com/multipletwigs/Malaysia-COVID-Analysis/main/COVID-Data/COVID-19%20Statistics/epidemic/waffle_vax.csv"
+    },
+    "layer": [
+      {
+        
+        "mark": {
+          "type": "square",
+          "size": 500
+        },
+        "encoding": {
+          "x": {
+            "field": "column ",
+            "type": "quantitative",
+            "axis": null
+          },
+          "y": {
+            "field": "row ",
+            "type": "quantitative",
+            "axis": null
+          },
+          "color": {
+            "field": "Type",
+            "type": "nominal",
+            "scale": {
+              "type": "ordinal",
+              "domain": [
+                "Full",
+                "Partial",
+                "Non-vax"
+              ],
+              "range": [
+                "#10b981",
+                "#a7f3d0",
+                "grey"
+              ]
+            },
+            "legend":{
+              "labelFont": "Roboto",
+              "labelFontSize": 15,
+              "titleFont":"Roboto",
+              "titleFontSize": 15,
+              "title": "Recover Status",
+              "orient": "bottom",
+              "offset": 38
+            }
+          },
+          "tooltip":[
+            {"field": "Type"}
+          ]
+        },
+        "title":{
+          "text": "Monkeypox Vaccination Progress as per October 2022",
+          "dx": 18,
+          "orient":"top",
+          "font": "Roboto",
+          "fontSize": 15
+        }
+      }
+    ],
+    "config": {
+      "style": {
+        "cell": {
+          "stroke": "transparent"
+        }
+      }
+    }
+  }

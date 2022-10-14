@@ -1,0 +1,127 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/multipletwigs/Malaysia-COVID-Analysis/main/COVID-Data/COVID-19%20Statistics/epidemic/cases_from.csv"
+    },
+    "transform": [
+        {
+            "calculate": "(datum.total_cases/396346)",
+            "as": "percentage_from"
+        }
+    ],
+    "width": "container",
+    "height": 10,
+    "layer": [
+        {
+            "params": [
+                {
+                    "name": "highlight",
+                    "select": {
+                        "type": "point",
+                        "on": "mouseover"
+                    }
+                },
+                {
+                    "name": "no_highlight",
+                    "select": {
+                        "type": "point",
+                        "on": "mouseout"
+                    }
+                },
+                {
+                    "name": "select",
+                    "select": "point"
+                }
+            ],
+            "mark": {
+                "type": "bar",
+                "size": 50,
+                "stroke": "black",
+                "cursor": "pointer"
+            },
+            "encoding": {
+                "x": {
+                    "field": "percentage_from",
+                    "type": "quantitative",
+                    "axis": null,
+                    "sort": "descending"
+                },
+                "color": {
+                    "field": "case type",
+                    "type": "nominal",
+                    "legend": {
+                        "title": "Case Types",
+                        "titleFontSize": 20,
+                        "titleFont": "Roboto",
+                        "orient": "bottom",
+                        "direction": "horizontal",
+                        "columns": 7,
+                        "labelFont": "Roboto",
+                        "labelFontSize": 15,
+                        "symbolSize": 500,
+                        "offset": 50
+                    },
+                    "scale": {
+                        "range": [
+                            "#00c0c7",
+                            "#5144d3",
+                            "#e8871a",
+                            "#da3490",
+                            "#2780eb",
+                            "#9089fa"
+                        ]
+                    }
+                },
+                "tooltip": [
+                    {
+                        "field": "case type",
+                        "title": "Case Type"
+                    },
+                    {
+                        "field": "percentage_from",
+                        "title": "Total Cases In %",
+                        "format": ".0%"
+                    }
+                ],
+                "fillOpacity": {
+                    "condition": {
+                        "param": "select",
+                        "value": 1
+                    },
+                    "value": 0.3
+                },
+                "strokeWidth": {
+                    "condition": [
+                        {
+                            "param": "select",
+                            "empty": false,
+                            "value": 3
+                        }
+                    ],
+                    "value": 0
+                },
+                "size":{
+                    "condition":[
+                        {
+                            "param": "highlight",
+                            "empty": false,
+                            "value": 60
+                        },
+                        {
+                            "param": "no_highlight",
+                            "empty": false,
+                            "value": 50
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "config": {
+        "style": {
+            "cell": {
+                "stroke": "transparent"
+            }
+        }
+    }
+}

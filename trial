@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <title>Malaysia COVID-19 Analysis</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css" media="all">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">    
+</head>
+<body>
+    <div id="main">
+        <div class="header">
+            <div class=header-container>
+                <h1>Monkeypox Cases Around the world</h1>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="top-cards">
+                <div class="section-header">
+                    <div class="vis-title">Nation Performance Index (Analysis Period: January 2021 to September 2021)</div>
+                    <p>This visualization reports on the important findings of COVID-19 Data in Malaysia using data from January to September. Below is a summary of statistical figures in 2021, in which we will perform in depth analysis on.</p>
+                </div>
+                <div class="info-cards">
+                    <div class="row-1">
+                        <li class="list-item">
+                            <div class="list-item-content">
+                                <i class="fas fa-hospital fa-3x slide"></i>
+                                <div class="card-stats">
+                                    <div class="card-title">Confirmed Cases</div>
+                                    <div class="card-desc">2,147,675 patients</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item2">
+                            <div class="list-item-content">
+                                <i class="fas fa-procedures fa-3x slide"></i>
+                                <div class="card-stats">
+                                    <div class="card-title">Total Deaths</div>
+                                    <div class="card-desc">24,094 patients</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-content">
+                                <i class="fas fa-syringe fa-3x slide"></i>
+                                <div class="card-stats">
+                                    <div class="card-title">Fully Vaccinated Population</div>
+                                    <div class="card-desc">62.02 percent</div>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                    <div class="row-1">
+                        <li class="list-item">
+                            <div class="list-item-content">
+                                <i class="fas fa-heartbeat fa-3x slide"></i>
+                                <div class="card-stats">
+                                    <div class="card-title">Total Recovered Cases</div>
+                                    <div class="card-desc">1,828,237 patients</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item2">
+                            <div class="list-item-content">
+                                <i class="fas fa-first-aid fa-3x slide"></i>
+                                <div class="card-stats">
+                                    <div class="card-title">Total Test Kits Adminstered</div>
+                                    <div class="card-desc">16,763,386 people</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-content">
+                                <i class="fas fa-stethoscope fa-3x slide"></i>
+                                <div class="card-stats">
+                                    <div class="card-title">Partly Vaccinated Population</div>
+                                    <div class="card-desc">72.08 percent</div>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <div class="daily-cases-section">
+                <div class="section-header">
+                    <div class="vis-title">Daily Monkeypox Cases Analysis in 2022</div>
+                    <!-- <p>Malaysia reported a total of <b>2,147,675 COVID-19 Cases</b> in 2021 with several infection waves. In this year, cases have reached all time highs multiple times, with the highest number of cases being <b>24,599 on the 26th August</b>. Ever since February, Malaysia has been ramping up its vaccination progress, and has undergone lockdown for a total of three times.</p>
+                    <div class="timeline-area">
+                        <div class="vis-wrapper" id="area_timeline_filt"></div>
+                    </div>
+                    <div class="vis-title">COVID-19 Severity Measure for each state in October</div>
+                    <p>A state is said to be <b class="bolds">severe if there are high COVID-19 cases with high population density.</b> We can see overall Malaysia is currently doing good, and <b class="bolds">most states are in the green</b>. States such as <b class="bolds">Kuala Lumpur, Selangor, Perlis</b> and <b class="bolds">Negeri Sembilan are hit more severely.</b></p>
+                    <div class="timeline-area">
+                        <div class="vis-wrapper" id="choropleth_map"></div>
+                    </div>
+                    <div class="vis-title">Where are these cases coming from?</div>
+                    <p>Despite having several total lockdowns in Malaysia, our cases does not seem to fall. This might be explained by the fact that<b class = "bolds"> work places such as factories are still allowed to operate, even during the lockdown period</b>.</p>
+                    <div class="timeline-area">
+                        <div class="vis-wrapper-2" id="bar_cases"></div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="vaccination-section">
+                <div class="section-header">
+                    <div class="vis-title">What is the vaccination progress in Malaysia?</div>
+                    <div><p>Ever since 24th of February, the Malaysian Government has started its mass vaccination program. As of 30th of September, we can see that <b class="bolds">more than half than the population of Malaysia has been vaccinated</b>. We are projected to reach <b class="bolds">80% nationwide immunity in 26th of November</b> if the vaccine momentum is maintained. </p>
+                    </div>
+                    <div class="vax-info-section">
+                            <div class="vis-wrapper" id="bar_vax"></div>
+                            
+                            <div class="vis-wrapper" id="waffle_vax"></div>
+                    </div>
+                    <div class="waffle_text">
+                            <br>
+                            <br>
+                            <h2 class="waffle-header">Where is Malaysia headed?</h2>
+                            <p>9th October 2021- In a national address, Malaysian Prime Minister Ismail Sabri Yaakob said that the state is headed for a <b class="bolds">major re-opening</b> after hitting an important vaccination milestone. <b class="bolds">Relaxation of interstate and overseas travel will start effectively on the 11th of October</b> for individuals who are adults and fully vaccinated against COVID-19.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="deaths-section">
+                <div class="section-header">
+                    <div class="vis-title">COVID-19 Death Rates Analysis in Malaysia</div>
+                    <div>
+                        <p>
+                            Here we analyse the <b class="bolds">commonalities of those who lost the battle against the COVID-19 Virus</b>.
+                        </p>
+                    </div>
+                    <div class="vax-info-section">
+                        <div class="vis-wrapper" id="deaths_his"></div>
+                        <div>
+                            <h2>Death by Age Groups</h2>
+                            <p>It appears that most deaths occur between<b class="bolds"> age 55 to age 75</b>. The youngest infected patient was <b class="bolds">aged 5 years old</b> and the oldest patient was <b class="bolds">aged 105 years old.</b></p>
+                            <p>Most of the deaths are also patients presented with comorbidities. Meaning they had <b class="bolds">underlying health conditions</b> to begin with.<p>
+                        </div>
+                    </div>
+                    <div class="death-wrapper">
+                        <div class="vax-info-section">
+                            <div class="vis-wrapper" id="deaths_radial"></div>
+                            <div>
+                                <h2>Are the deceased vaccinated?</h2>
+                            <p>We also can see that majority of those <b class="bolds">who did not survive are not vaccinated.</b> Although there are cases where the patient is completely vaccinated, but they usually <b class="bolds">present other health problems as well.</b></p>
+                            <p>We also see <b class="bolds">higher number of recoveries everyday</b> as compared to deaths.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="vaccination-section">
+                <div class="section-header">
+                    <div class="vis-title">Credits and Resources</div>
+                    <p>Visualization created by Khong Lap Hoe 32114818 for FIT3179 Assignment 2</p>
+                    <p>Resources: <br><a href="https://github.com/MoH-Malaysia/covid19-public/tree/main/epidemic">MOH Open Data for COVID</a><br><a href="https://github.com/CITF-Malaysia/citf-public">CITF for Open Data for Vaccines</a></p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<!--Script Injections for Vega-Lite Idioms-->
+<script type="text/javascript">
+
+     var vis1 = "JSONs/choropleth_map.vg.json"
+     vegaEmbed('#choropleth_map', vis1, {"actions": false}).then(function(result) {}).catch(console.error);
+
+    // var vis2 = "JSONs/trellis_area_cases_state.vg.json"
+    // vegaEmbed('#area-trellis', vis2, {"actions": false}).then(function(result) {}).catch(console.error);
+
+    // var vis3 = "JSONs/bubble_timeline.vg.json"
+    // vegaEmbed('#bubble_timeline', vis3, {"actions": false}).then(function(result) {}).catch(console.error);
+
+    // var vis4 = "JSONs/bar_msia_cases.vg.json"
+    // vegaEmbed('#area_timeline', vis4, {"actions": false}).then(function(result) {}).catch(console.error);
+
+    // var vis5 = "JSONs/area_diverge.vg.json"
+    // vegaEmbed('#area_timeline_filt', vis5, {"actions": false}).then(function(result) {}).catch(console.error);
+
+    // var vis6 = "JSONs/area_state.vg.json"
+    // vegaEmbed('#area_state_filt', vis6, {"actions": false}).then(function(result) {}).catch(console.error);
+
+    var vis7 = "JSONs/waffle_chart.vg.json"
+    vegaEmbed('#waffle_chart', vis7, {"actions": false}).then(function(result) {}).catch(console.error);
+
+    var vis8 = "JSONs/bar_cases.vg.json"
+    vegaEmbed('#bar_cases', vis8, {"actions": false}).then(function(result) {}).catch(console.error);
+
+    // var vis9 = "JSONs/bar_vax.vg.json"
+    // vegaEmbed('#bar_vax', vis9, {"actions": false}).then(function(result) {}).catch(console.error);
+
+    // var vis10 = "JSONs/scatter_plot_vax_cases.vg.json"
+    // vegaEmbed('#scatter-plot', vis10, {"actions": false}).then(function(result) {}).catch(console.error);
+
+    // var vis11 = "JSONs/histo_death.vg.json"
+    // vegaEmbed('#deaths_his', vis11, {"actions": false}).then(function(result) {}).catch(console.error);
+
+    // var vis12 = "JSONs/radial_death_attr.vg.json"
+    // vegaEmbed('#deaths_radial', vis12, {"actions": false}).then(function(result) {}).catch(console.error);
+</script>
