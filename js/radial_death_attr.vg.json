@@ -3,15 +3,15 @@
     "data": {
       "values": [
         {
-          "S": "Unvaccinated",
+          "S": "Adult",
           "b": 18028
         },
         {
-          "S": "First Dose",
+          "S": "Children",
           "b": 5181
         },
         {
-          "S": "Second Dose",
+          "S": "Senior Citizen",
           "b": 2978
         }
       ]
@@ -63,20 +63,20 @@
           "labelFontSize": 15,
           "titleFont": "Roboto",
           "titleFontSize": 15,
-          "title": "Vaccination Status",
+          "title": "Age Group",
           "orient": "top-left"
         },
         "scale": {
           "range": [
-            "#10b981",
-            "#1b6d56",
-            "#f64e60"
+            "#a1aadd",
+            "#93c7d3",
+            "#9cb5b5"
           ]
         }
       }
     },
     "title": {
-      "text": "COVID-19 Deaths by Vaccination Status",
+      "text": "Vaccination Taken Among Different Age Group",
       "font": "Roboto",
       "fontSize": 15
     },

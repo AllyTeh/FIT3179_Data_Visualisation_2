@@ -58,9 +58,9 @@
         "type": "ordinal",
         "domain": {"data": "table", "field": "id"},
         "range": [
-            "#263356",
-            "#c0471c",
-            "#865a33"
+          "#90927d",
+          "#c0471c",
+          "#865a33"
         ]
       }
     ],

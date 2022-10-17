@@ -1,155 +1,114 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 950,
+  "width": 955,
   "height": 500,
-  "projection": {
-    "type": "equalEarth"
-  },
-  "data": {
-    "url": "https://kuanmy.github.io/asgn2/js/ne_110m_admin_0_countries.topojson",
-    "format": {
-        "type": "topojson",
-        "feature": "ne_110m_admin_0_countries"
-    }
-  },
-  "layer": [
+  "padding": {"left": 10},
+  "params": [
     {
-      "mark": {
-        "type": "geoshape",
-        "color": "gray",
-        "stroke": "black"
-      },
-      "encoding": {
-        "fillOpacity": {
-          "condition": {"param": "select", "value": 1},
-          "value": 0.4
-        },
-        "strokeWidth": {
-          "condition": [
-            {
-              "param": "select",
-              "empty": false,
-              "value": 2
-            },
-            {
-              "param": "highlight",
-              "empty": false,
-              "value": 1
-            }
-          ],
-          "value": 0.1
-        },
-        "tooltip": [
-          {"field": "properties.ADMIN", "type": "nominal", "title": "Country"}
-        ]
+      "name": "zoom_level",
+      "value": 200,
+      "bind": {
+        "input": "range",
+        "min": 150,
+        "max": 300,
+        "step": 50,
+        "name": "Zoom: "
       }
     },
     {
-      "params": [
-        {
-          "name": "highlight",
-          "select": {"type": "point", "on": "mouseover"}
-        },
-        {"name": "select", "select": "point"}
-      ],
-      "transform": [
-        {
-          "lookup": "properties.ADMIN",
-          "from": {
-            "data": {
-              "url": "https://kuanmy.github.io/asgn2/data/continent_country_internet.csv"
-            },
-            "key": "country",
-            "fields": ["internetuserate"]
-          }
-        },
-        {
-          "filter": "datum.internetuserate > 0"
-        }
-      ],
-      "mark": {
-        "type": "geoshape",
-        "stroke": "black"
-      },
-      "encoding": {
-        "color": {
-          "title": "Internet Use Rate",
-          "field": "internetuserate",
-          "type": "quantitative",
-          "scale": {
-              "type": "threshold",
-              "domain": [100, 500, 1000],
-              "range": ["#fd8d3c", "#e6550d", "#bd0026", "#7f0000"]
-          },
-          "legend": {
-            "orient": "none",
-            "legendX": 20,
-            "legendY": 80
-          }
-        },
-        "fillOpacity": {
-          "condition": {"param": "select", "value": 1},
-          "value": 0.4
-        },
-        "strokeWidth": {
-          "condition": [
-            {
-              "param": "select",
-              "empty": false,
-              "value": 2
-            },
-            {
-              "param": "highlight",
-              "empty": false,
-              "value": 1
-            }
-          ],
-          "value": 0.1
-        },
-        "tooltip": [
-          {"field": "properties.ADMIN", "type": "nominal", "title": "Country"},
-          {"field": "internetuserate", "type": "quantitative", "title": "Internet User Rate", "format": "d"}
-        ]
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {"country": "Iceland"}
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "dx": -35,
-        "dy": -152
-      },
-      "encoding": {
-        "text": {"field": "country"}
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {"country": "East Timor"}
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "dx": 240,
-        "dy": 35
-      },
-      "encoding": {
-        "text": {"field": "country"}
+      "name": "center_to",
+      "value": [0, 0],
+      "bind": {
+        "input": "select",
+        "options": [
+          [0, 0],
+          [81, 144],
+          [-60, -22],
+          [9, 1],
+          [130, -30],
+          [-90, 120]
+        ],
+        "labels": [
+          "Whole map",
+          "Asia & Europe",
+          "South America",
+          "Africa",
+          "Asia Pacific",
+          "North America"
+        ],
+        "name": "Map Centre: "
       }
     }
   ],
-  "config": {
-    "background": null,
-    "style": {
-      "cell": {
-        "stroke": "transparent"
+  "projection": {
+    "type": "equalEarth",
+    "scale": {"expr": "zoom_level"},
+    "rotate": [-20, 0, 0],
+    "center": {"expr": "center_to"}
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_110m_admin_0_countries"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.NAME",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/AllyTeh/FIT3179_Data_Visualisation_2/main/Data/monkeypox_by_country.csv"
+            },
+            "key": "Country",
+            "fields": ["Confirmed_Cases"]
+          }
+        },
+        {"calculate": "datum.Confirmed_Cases", "as": "Confirmed Cases"}
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "color": {
+          "field": "Confirmed Cases",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [20, 100, 200, 300, 700, 900, 1000, 2000, 2500],
+            "range": [
+            "#ffcd73",
+            "#ffb27b",
+            "#fd8d3c",
+            "#FF6347",
+            "#FF4500",
+            "#EC410B",
+            "#DC143C",
+            "#B22222",
+            "#8B0000",
+            "#57291f"
+            ]
+          },
+          "legend": {
+            "orient": "bottom-right",
+            "direction": "horizontal",
+            "labelColor": "#73606c",
+            "titleColor": "#73606c"
+          }
+        },
+        "tooltip": [
+          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {"field": "Confirmed Cases", "type": "quantitative"}
+        ]
       }
     }
-  } 
+  ],
+  "config": {"view": {"stroke": "transparent"}}
 }
- 

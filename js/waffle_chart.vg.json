@@ -45,7 +45,7 @@
               "labelFontSize": 15,
               "titleFont":"Roboto",
               "titleFontSize": 15,
-              "title": "Recover Status",
+              "title": "Vaccination Status",
               "orient": "bottom",
               "offset": 38
             }
@@ -55,7 +55,7 @@
           ]
         },
         "title":{
-          "text": "Monkeypox Vaccination Progress as per October 2022",
+          "text": "Vaccination Progress as per October 2022",
           "dx": 18,
           "orient":"top",
           "font": "Roboto",

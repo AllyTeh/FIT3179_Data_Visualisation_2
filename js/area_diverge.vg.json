@@ -44,7 +44,7 @@
                     "mark": {
                         "type": "bar",
                         "size": 2,
-                        "color": "#c6dffe"
+                        "color": "#ffb27b"
                     },
                     "encoding": {
                         "x": {
@@ -71,7 +71,7 @@
                         "color":{
                             "field":"colors",
                             "scale":{
-                                "range":["#c6dffe"]
+                                "range":["#ffb27b"]
                             },
                             "legend":{
                                 "orient": "bottom",
@@ -91,7 +91,7 @@
                     "mark": {
                         "type": "line",
                         "size": 2,
-                        "color": "#1b6d56"
+                        "color": "#B22222"
                     },
                     "encoding": {
                         "x": {
@@ -119,7 +119,7 @@
                         "stroke":{
                             "field":"colors1",
                             "scale":{
-                                "range":["#1b6d56"]
+                                "range":["#B22222"]
                             },
                             "legend":{
                                 "orient": "none",
@@ -470,7 +470,7 @@
                     "title": "Drag to filter out an interval",
                     "mark": {
                         "type": "bar",
-                        "color": "#f1faff",
+                        "color": "#ffcd73",
                         "cursor": "col-resize"
                     },
                     "params": [
@@ -506,7 +506,7 @@
                 {
                     "mark": {
                         "type": "line",
-                        "color": "#1b6d56",
+                        "color": "#B22222",
                         "cursor": "col-resize"
                     },
                     "encoding": {
