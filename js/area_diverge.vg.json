@@ -1,0 +1,538 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/multipletwigs/Malaysia-COVID-Analysis/main/COVID-Data/COVID-19%20Statistics/epidemic/cases_malaysia.csv"
+    },
+    "transform": [
+        {
+            "calculate": "timeParse(datum['date'], '%d/%m/%Y')",
+            "as": "date"
+        },
+        {
+            "calculate": "(datum.cases_new / 32657400) * 1000",
+            "as": "cases_percentage"
+        },
+        {
+            "calculate": "datum.cases_new - 10",
+            "as": "cases_line"
+        },
+        {
+            "calculate": "(datum.cumul_full / 32657400) * 1000",
+            "as": "full_percentage"
+        },
+        {
+            "calculate": "-(datum.cases_recovered)",
+            "as": "recovered_flip"
+        },
+        {
+            "calculate": "datum.cases_new - datum.cases_recovered",
+            "as": "difference"
+        },
+        {
+            "calculate": "1", "as": "colors"
+        },
+        {
+            "calculate": "1", "as": "colors1"
+        }
+    ],
+    "vconcat": [
+        {
+            "width": 888,
+            "height": "container",
+            "layer":[
+                {
+                    "mark": {
+                        "type": "bar",
+                        "size": 2,
+                        "color": "#c6dffe"
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "date",
+                            "type": "temporal",
+                            "axis": {
+                                "title": "null",
+                                "labelFont": "Roboto",
+                                "labelFontSize": 12
+                            }
+                        },
+                        "y": {
+                            "field": "cases_new",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": "Daily New Cases (Malaysia)",
+                                "labelFont": "Roboto",
+                                "labelFontSize": 15,
+                                "titleFont": "Roboto",
+                                "titleFontSize": 15
+                            },
+                            "scale": {"domain": [0,30000]}
+                        },
+                        "color":{
+                            "field":"colors",
+                            "scale":{
+                                "range":["#c6dffe"]
+                            },
+                            "legend":{
+                                "orient": "bottom",
+                                "labelFont": "Roboto",
+                                "labelFontSize": 15,
+                                "labelExpr": "'Daily new cases'",
+                                "title": "Encoding Legend",
+                                "titleFont":"Roboto",
+                                "titleFontSize": 15,
+                                "symbolSize": 500
+                                
+                            }
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "line",
+                        "size": 2,
+                        "color": "#1b6d56"
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "date",
+                            "type": "temporal",
+                            "axis": {
+                                "title": "null",
+                                "labelFont": "Roboto",
+                                "labelFontSize": 12
+                            }
+                        },
+                        "y": {
+                            "field": "cases_recovered",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": "Daily New Cases (Malaysia)",
+                                "labelFont": "Roboto",
+                                "labelFontSize": 15,
+                                "titleFont": "Roboto",
+                                "titleFontSize": 15,
+                                "gridDash": [7,7]
+                            },
+                            "scale": {"domain": [0, 30000]}
+                        },
+                        "stroke":{
+                            "field":"colors1",
+                            "scale":{
+                                "range":["#1b6d56"]
+                            },
+                            "legend":{
+                                "orient": "none",
+                                "labelExpr": "'Daily new recoveries'",
+                                "labelFont": "Roboto",
+                                "labelFontSize": 15,
+                                "title": null,
+                                "symbolSize": 500,
+                                "symbolStrokeWidth": 5,
+                                "legendY": 478,
+                                "legendX": 150
+                            }
+                        }
+                    }
+                },
+                {
+                    "transform": [
+                        {
+                          "filter": {"param":"brush"}
+                        }
+                      ],
+                      "mark":{
+                          "type": "text",
+                          "dx": -90,
+                          "dy": -115,
+                          "font": "Roboto",
+                          "fontSize": 15,
+                          "fontWeight": "bold"
+                      },
+                      "encoding": {
+                          "text": {
+                              "aggregate":"max",
+                              "field": "cases_new"
+                          }
+                      }
+                },
+                {
+                    "transform": [
+                        {
+                          "filter": {"param":"brush"}
+                        }
+                      ],
+                      "mark":{
+                          "type": "text",
+                          "dx": -50,
+                          "dy": -135,
+                          "font": "Roboto",
+                          "fontSize": 15,
+                          "fontWeight": "bold"
+                      },
+                      "encoding": {
+                          "text": {
+                              "aggregate":"max",
+                              "field": "cases_recovered"
+                          }
+                      }
+                },
+                {
+                    "transform": [
+
+                        {
+                          "filter": {"param":"brush"}
+                        }
+                      ],
+                      "mark":{
+                        "type": "text",
+                        "dx": -290,
+                        "dy": -90,
+                        "font": "Roboto",
+                        "fontSize": 15,
+                        "fontWeight": "bold"
+                      },
+                      "encoding": {
+                          "text": {
+                              "aggregate": "min",
+                              "field": "date",
+                              "timeUnit":"monthdate"
+                          }
+                      }
+                },
+                {
+                    "transform": [
+
+                        {
+                          "filter": {"param":"brush"}
+                        }
+                      ],
+                      "mark":{
+                        "type": "text",
+                        "dx": -220,
+                        "dy": -90,
+                        "font": "Roboto",
+                        "fontSize": 15,
+                        "fontWeight": "bold"
+                      },
+                      "encoding": {
+                          "text": {
+                              "aggregate": "max",
+                              "field": "date",
+                              "timeUnit":"monthdate"
+                          }
+                      }
+                },
+                {
+                    "encoding": {
+                        "x": {
+                            "field": "date",
+                            "type": "temporal",
+                            "axis": {
+                                "title": null,
+                                "grid": false
+                            },
+                            "scale": {
+                                "domain": {
+                                    "param": "brush"
+                                }
+                            }
+                        },
+                        "y": {
+                            "field": "cases_new",
+                            "type": "quantitative"
+                        },
+                        "tooltip": [
+                            {
+                                "field": "date",
+                                "title": "Date",
+                                "timeUnit": "monthdate"
+                            },
+                            {
+                                "field": "cases_recovered",
+                                "title": "Number of recoveries"
+                            },
+                            {
+                                "field": "cases_new",
+                                "title": "Number of new cases"
+                            }
+                        ]
+                    },
+                    "layer": [
+                        {
+                            "params": [
+                                {
+                                    "name": "label",
+                                    "select": {
+                                        "type": "point",
+                                        "encodings": [
+                                            "x"
+                                        ],
+                                        "nearest": true,
+                                        "on": "mouseover"
+                                    }
+                                }
+                            ],
+                            "mark": {
+                                "type": "point"
+                            },
+                            "encoding": {
+                                "opacity": {
+                                    "condition": {
+                                        "param": "label",
+                                        "empty": false,
+                                        "value": 1
+                                    },
+                                    "value": 0
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "encoding": {
+                        "x": {
+                            "field": "date",
+                            "type": "temporal",
+                            "axis": {
+                                "title": null,
+                                "grid": false
+                            },
+                            "scale": {
+                                "domain": {
+                                    "param": "brush"
+                                }
+                            }
+                        },
+                        "y": {
+                            "field": "cases_recovered",
+                            "type": "quantitative"
+                        },
+                        "tooltip": [
+                            {
+                                "field": "date",
+                                "title": "Date",
+                                "timeUnit": "monthdate"
+                            },
+                            {
+                                "field": "cases_recovered",
+                                "title": "Number of recoveries"
+                            },
+                            {
+                                "field": "cases_new",
+                                "title": "Number of new cases"
+                            }
+                        ]
+                    },
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "point"
+                            },
+                            "encoding": {
+                                "opacity": {
+                                    "condition": {
+                                        "param": "label",
+                                        "empty": false,
+                                        "value": 1
+                                    },
+                                    "value": 0
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "transform": [
+                        {
+                            "filter": {
+                                "param": "label",
+                                "empty": false
+                            }
+                        },
+                        {
+                            "filter": {
+                                "param": "brush"
+                            }
+                        }
+                    ],
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "rule",
+                                "strokeDash": [
+                                    7,
+                                    7
+                                ],
+                                "strokeWidth": 2
+                            },
+                            "encoding": {
+                                "x": {
+                                    "type": "temporal",
+                                    "field": "date",
+                                    "scale": {
+                                        "domain": {
+                                            "param": "brush"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "transform": [
+                        {
+                          "filter": "datum.cases_new == 24599"
+                        }
+                      ],
+                      "mark":{
+                        "type": "text",
+                        "dx": -275,
+                        "dy": -115,
+                        "font": "Roboto",
+                        "fontSize": 15,
+                        "fontWeight": "bold"
+                    },
+                    "encoding": {
+                        "text": {
+                            "value": "Maximum number of new cases within period: "
+                        }
+                    }
+                },
+                {
+                    "transform": [
+                        {
+                          "filter": "datum.cases_new == 24599"
+                        }
+                      ],
+                      "mark":{
+                        "type": "text",
+                        "dx": -259,
+                        "dy": -135,
+                        "font": "Roboto",
+                        "fontSize": 15,
+                        "fontWeight": "bold"
+                    },
+                    "encoding": {
+                        "text": {
+                            "value": "Maximum number of new recoveries within period: "
+                        }
+                    }
+                },
+                {
+                    "transform": [
+                        {
+                          "filter": "datum.cases_new == 24599"
+                        }
+                      ],
+                      "mark":{
+                        "type": "text",
+                        "dx": -374,
+                        "dy": -90,
+                        "font": "Roboto",
+                        "fontSize": 15,
+                        "fontWeight": "bold"
+                    },
+                    "encoding": {
+                        "text": {
+                            "value": "Selected Period: "
+                        }
+                    }
+                },
+                {
+                    "transform": [
+                        {
+                          "filter": "datum.cases_new == 24599"
+                        }
+                      ],
+                      "mark":{
+                        "type": "text",
+                        "dx": -255,
+                        "dy": -90,
+                        "font": "Roboto",
+                        "fontSize": 15,
+                        "fontWeight": "bold"
+                    },
+                    "encoding": {
+                        "text": {
+                            "value": "to"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "width": 888,
+            "height": 50,
+            "layer": [
+                {
+                    "title": "Drag to filter out an interval",
+                    "mark": {
+                        "type": "bar",
+                        "color": "#f1faff",
+                        "cursor": "col-resize"
+                    },
+                    "params": [
+                        {
+                            "name": "brush",
+                            "select": {
+                                "type": "interval",
+                                "encodings": [
+                                    "x"
+                                ]
+                            }
+                        }
+                    ],
+                    "encoding": {
+                        "x": {
+                            "field": "date",
+                            "type": "temporal",
+                            "axis":{
+                                "grid": false
+                            }
+                        },
+                        "y": {
+                            "field": "cases_new",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": null,
+                                "tickCount": 3,
+                                "grid": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "line",
+                        "color": "#1b6d56",
+                        "cursor": "col-resize"
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "date",
+                            "type": "temporal"
+                        },
+                        "y": {
+                            "field": "cases_recovered",
+                            "type": "quantitative",
+                            "axis": {
+                                "title": null,
+                                "tickCount": 3,
+                                "grid": false
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "config": {
+        "style": {
+            "cell": {
+                "stroke": "transparent"
+            }
+        }
+    }
+}
