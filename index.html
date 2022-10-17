@@ -1,78 +1,416 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-  
-  <!-- CSS file -->
-  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
- 
-  <!-- testing -->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-  <title>Malaysia COVID-19 Analysis</title>
-  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="style.css" media="all">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Go with the Flow</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Magra:wght@400;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css" media="all">
 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <title>Malaysia COVID-19 Analysis</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css" media="all">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">    
 </head>
 <body>
+    <div class="row">
+        <nav class="col-2 sticky-left-bar">
+            <div class="mt-3 top-border">
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <h4>
+                            Total Monkeypox Case
+                        </h4>
+                    </div>    
+                    <div class="col-6 text-right my-auto"><h1>61664</h1></div> 
+                </div>
+                <form class="mt-3 form-inline caption">
+                    Focus on the continent
+                    <select class="custom-select mx-2" id="select-continent" onchange="changeContinent(this.value)">
+                        <option selected value="All">All</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Africa">Africa</option>
+                        <option value="Europe">Europe</option>
+                        <option value="North America">North America</option>
+                        <option value="South America">South America</option>
+                        <option value="Australia">Australia</option>
+                    </select>
+                </form>
+            </div>
 
-<div id="main">
-    <div class="header">
-        <div class=header-container>
-            <h1>Monkeypox Cases Around the World</h1>
-            <p>This visualization reports on the important findings of Monkeypox caes Data aroudn the world using data from January to October. Below is a summary of statistical figures in 2022, in which we will perform in depth analysis on.</p>
+            <div class="mt-3 caption">
+                Zoom in the map for country names. 
+            </div>
+
+            <div class="mt-3 small-text">
+                <table class="table text-center table-sm">
+                    <thead class='thead-dark'>
+                        <tr>
+                            <th scope="col">Monkeypox Status</th>
+                        </tr>
+                        <tbody>
+                            <tr style="color: #263356;">
+                                <th>Confirm</th>
+                                
+                            </tr>
+                            <tr style="color: #c0471c;">
+                                <th>Suspected</th>
+                               
+                            </tr>
+                            <tr style="color: #865a33;">
+                                <th>Hospitalized</th>
+                                
+                            </tr>
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+
+            <div class="mt-3 smaller-text">
+                <div id="pollution_carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner text-justify">
+                    <div class="carousel-item active">
+                        <div class="height-130">
+                            <p>The <strong>most polluted river</strong> in Malaysia is in <strong>Pasir Gudang, Johor</strong>. Contributions to pollution include industrial sources, sewage discharge, oxidation ponds, sullage from restaurants and workshops, and direct discharge.</p>
+                            From <a href="https://www.thestar.com.my/visual-stories/river-pollution/" class="stretched-link">The Star</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="height-130">
+                            <p>In <strong>Sungai Petani, Kedah</strong>, Sahabat Alam Malaysia (SAM) has found aquatic life to have perished and growth of mangrove tree stunted. They urge the authorities to focus on <strong>proper waste disposal system</strong>, water treatment and prevent waste oil discharges into the river.</p>
+                            From <a href="https://consumer.org.my/river-in-sungai-petani-kedah-getting-more-polluted/" class="stretched-link">Consumer Association of Penang</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="height-130">
+                            <p>In <strong>Kuala Betis near Gua Musang, Kelantan</strong>, river pollution has claimed the life of an indigenous people of Temiar, and seven others were hospitalized possibly due to poisoning from drinking water from the river. The water supply was contaminated with <strong>toxins</strong>.</p>
+                            From <a href="https://www.foe-malaysia.org/sam_upset_that_orang_asli_in_kelantan_become_victims_of_river_pollution" class="stretched-link">Sahabat Alam Malaysia</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="height-130">
+                            <p>Just recently, pollution is detected at <strong>Sungai Semenyih</strong>, and consumers in Klang Valley, including Selangor, Kuala Lumpur and Putrajaya were affected by water supply cuts. The source of pollution is an <strong>Industrial Zone</strong> and a <strong>goose and duck farm.</strong></p>
+                            From <a href="https://www.straitstimes.com/asia/se-asia/malaysia-river-pollution-leads-to-water-supply-cut-to-more-than-300000-people" class="stretched-link">The Straits Time</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="height-130">
+                            <p>Pollution was detected at the <strong>Batu Hampar Dam in Batu Berendam, Melaka</strong>, causing Melaka River to turn black and smelly. Dead fish were seen. </p>
+                            From <a href="https://www.malaymail.com/news/malaysia/2019/05/20/melaka-river-turns-black-smelly-with-dead-fish-due-to-suspected-pollution/1754737" class="stretched-link">Malay Mail</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="height-130">
+                            <p>River pollution was detected in <strong>Batang Benar, Nilai, Negeri Sembilan</strong>. The pollution is possible caused by <strong>duck farms</strong>, the <strong>Pajam landfill</strong> or a <strong>chicken egg processing plant</strong>.</p>
+                            From <a href="https://www.freemalaysiatoday.com/category/nation/2020/10/05/negeri-sembilan-govt-awaits-nilai-river-pollution-report/" class="stretched-link">Free Malaysia Today</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="height-130">
+                            <p>Rivers in <strong>Kuantan, Pahang</strong> have been polluted with heavy metals due to <strong>bauxite mining</strong>, consequently <strong>causing side effects to human health</strong> as almost all water consumption in Kuantan is drawn downstream from these mines. An analysis by the Department of Analysis revealed that the rivers are contaminated with mercury, aluminium at several locations in Pahang. </p>
+                            From <a href="https://cleanmalaysia.com/2016/12/16/kuantan-rivers-polluted-heavy-metals/" class="stretched-link">Clean Malaysia</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="height-130">
+                            <p><strong>Pig waste</strong> has caused <strong>River Kuala Gepai, Perak</strong> to turn black for years since no actions were taken by any parties. The indigenous people community that has been relying on the river waters for living has been affected for years as well.</p>
+                            From <a href="https://says.com/my/news/netizens-angry-alleged-pig-waste-dumping-turns-perak-river-black" class="stretched-link">Says</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="height-130">
+                            <p>While waiting for the Penang Pig Farming Enactment 2020 to be enforced, a total of <strong>26 pig farms</strong> in <strong>Kampung Selamat, Tasek Gelugor, Pulau Pinang</strong> have been found to have dumped sewage and animal feaces into rivers. The local authority is looking to close down pig farms that do not follow certain rules, such as dumping waste to rivers and operating in excess capacity.</p>
+                            From <a href="https://www.malaymail.com/news/malaysia/2020/10/15/total-of-26-pig-farms-in-penang-found-dumping-sewage-directly-into-river-st/1913121" class="stretched-link">Malay Mail</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="height-130">
+                            <p>A <strong>massive oil spill</strong> from a diesel-bitumen premix plant has polluted the <strong>Liku River in Sarawak</strong>, causing water disruption for up to 12 hours. The Sarawak Conservation ALliance for Natural Environment (SCANE) urged the continent goverment to not allow industrial plants situated near water sources. The current requirement continents that all new industrial plants must be at least 500 metres away from rivers, to which SCANE has urged the government to increase the distance threshold.</p>
+                            From <a href="https://hornbillunleashed.wordpress.com/2012/03/16/28465/" class="stretched-link">Horbill Unleashed</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="height-130">
+                            <p>Within a period of 2 months, residents in <strong>Selangor</strong> has experienced water disruption twice due to river pollution. Water pollution in <strong>Sungai Gong, Rawang</strong> was caused by a <strong>factory</strong>, while the pollution in <strong>Sungai Semenyih</strong> was caused by <strong>dumping of waste</strong> near the upstream of the river.</p>
+                            From <a href="https://selangorjournal.my/2020/09/factory-behind-river-pollution-to-be-served-notice-to-cease-operations-mb/" class="stretched-link">Selangor Journal</a>, 
+                            <a href="https://www.freemalaysiatoday.com/category/nation/2020/10/05/waste-dumped-at-nilai-industrial-area-source-of-sungai-semenyih-pollution/" class="stretched-link">Free Malaysia Today</a> and 
+                            <a href="https://www.malaymail.com/news/malaysia/2020/10/20/police-open-investigation-paper-on-sungai-selangor-pollution/1914418" class="stretched-link">Malay Mail</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </nav>
+
+
+        <div class="col-9 scroll-snap-parent">
+            <section class="scroll-snap-section">
+
+
+                <div class="content">
+
+                    <div class="header row mb-3 pb-3">
+                        <div class="col">
+                            <p class="h1 text-center pt-4 title">Monkeypox Case Analysis</p>
+                            <p class="text-center h2">Around the World</p>
+                        </div>
+                    </div>
+
+                    <div class="top-cards">
+                        <div class="section-header">
+                            <div class="vis-title">Nation Performance Index (Analysis Period: January 2021 to September 2021)</div>
+                            <p>This visualization reports on the ,<strong>important</strong> findings of COVID-19 Data in Malaysia using data from January to September. Below is a summary of statistical figures in 2021, in which we will perform in depth analysis on.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="content">
+                <div class="top-border section-header">
+                    <p class="h5 text-center">Number of <span id="continent-name" class="font-weight-bold">Monkeypox Cases</span> in the whole word</p>
+
+                    <div id="map" class='my-1 mx-auto'></div>
+                </div>
+
+                <div class="section-header">
+                    <p class="h5 text-center">Number of Monkeypox Cases in the whole world by <strong>continent</strong>. </p>
+                    <div class="mx-auto row">
+                        <div id="donut_asia" class="col-4 selectable" onclick="changeContinent('Asia')"></div>
+                        <div id="donut_europe" class="col-4 selectable" onclick="changeContinent('Europe')"></div>
+                        <div id="donut_africa" class="col-4 selectable" onclick="changeContinent('Africa')"></div>
+                        <div id="donut_australia" class="col-4 selectable" onclick="changeContinent('Australia')"></div>
+                        <div id="donut_south" class="col-4 selectable" onclick="changeContinent('South America')"></div>
+                        <div id="donut_north" class="col-4 selectable" onclick="changeContinent('North America')"></div>
+                    </div>
+                </div>
+            </div>
+
+            <section>
+                <div id="network" class="my-1 mx-auto" style="display: none;"></div>
+            </section>
+
+            <div class="content">
+                <div class="daily-cases-section">
+                    <div class="section-header">
+                        <div class="vis-title">Daily COVID-19 Cases Analysis in 2021</div>
+                        <p>Malaysia reported a total of <b>2,147,675 COVID-19 Cases</b> in 2021 with several infection waves. In this year, cases have reached all time highs multiple times, with the highest number of cases being <b>24,599 on the 26th August</b>. Ever since February, Malaysia has been ramping up its vaccination progress, and has undergone lockdown for a total of three times.</p>
+                        <div class="timeline-area">
+                            <div class="vis-wrapper" id="area_timeline_filt"></div>
+                        </div>
+
+                        <div class="vis-title">Where are these cases coming from?</div>
+                        <p>Despite having several total lockdowns in Malaysia, our cases does not seem to fall. This might be explained by the fact that<b class = "bolds"> work places such as factories are still allowed to operate, even during the lockdown period</b>.</p>
+                        <div class="timeline-area">
+                            <div class="vis-wrapper-2" id="bar_cases_from"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="content">
+                <div class="deaths-section">
+                    <div class="section-header">
+                        <div class="vis-title">COVID-19 Death Rates Analysis in Malaysia</div>
+                        <div>
+                            <p>
+                                Here we analyse the <b class="bolds">commonalities of those who lost the battle against the COVID-19 Virus</b>.
+                            </p>
+                        </div>
+                        <div class="vax-info-section">
+                            <div class="vis-wrapper" id="deaths_radial"></div>
+                            <div class="vis-wrapper" id="waffle_chart"></div>
+                        </div>
+
+                        <div class="waffle_text">
+                            <br>
+                            <br>
+                            <br>
+                            <h2 class="waffle-header">Where is Malaysia headed?</h2>
+                            <p>9th October 2021- In a national address, Malaysian Prime Minister Ismail Sabri Yaakob said that the state is headed for a <b class="bolds">major re-opening</b> after hitting an important vaccination milestone. <b class="bolds">Relaxation of interstate and overseas travel will start effectively on the 11th of October</b> for individuals who are adults and fully vaccinated against COVID-19.</p>
+                        </div>
+                    </div>
+            </div>
+
+            <section class="scroll-snap-section">
+                <div class="mt-3 mx-auto row">
+                    <div class="col-5 pt-5">
+                    <div class="col-2 px-0 pb-0 py-5">
+                        <div id="diverging"></div>
+                    </div>
+                    <div class="col-5 pt-5">
+                        <div class="mt-3 smaller-text"></div>
+                        </div>
+                    </div>
+                </div>    
+            </section>
         </div>
+        <div class="col-1"></div>
     </div>
+
+    <div class="mb-2 caption text-center top-border scroll-snap-section">FIT3179 Visualisation 2 by <a href="https://www.linkedin.com/in/ally-teh/" class="stretched-link">Ally Teh Tze-Rou</a> - Datasets provided by the <a href="https://www.kaggle.com/datasets/deepcontractor/monkeypox-dataset-daily-updated" class="stretched-link">Kaggle</a></div>
+
+    <script src="resources/scrollsnap/vendor/philipwalton/polyfill.js"></script>
+    <script src="resources/scrollsnap/src/scrollsnap-polyfill.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $('.carousel').carousel({
+            interval: 7000
+        });
+
+        const continents = ["Asia","Africa","Australia","Europe","South America","North America"];
+        const full_continents = ["All", "Asia","Africa","Australia","Europe","South America","North America"];
+        const zoom_lvls = [3800, 15924.339255683179, 15924.339255683179, 15500, 50000, 50000, 28919.850613509137, 11078.517935175274, 11078.517935175272, 38566.511712503205, 49021.76619973625, 8307.44263553608, 5937.687240853303, 19701.999023405944, 12793.483759020948];
+        const rotateX_values = [-112.04762503390877, -108.34923307439438, -105.42405872359602, -106.85034335678658, -106.58656098091217, -107.15951877604296, -106.89332076712365, -107.41231736702763, -105.95963142819167, -104.92687670907564, -105.2128711683424, -117.13131044188025, -112.70524911220461, -106.23908080139708, -107.97305022890666];
+        const centreY_values = [4.079141137028495, 2.0991011945577274, 5.790649637262673, 5.409881822493633, 3.1176440267608916, 2.3212326915290458, 2.848450833639557, 3.6366160466330895, 4.7755237442375105, 6.441561119976851, 5.358025007227503, 5.553398429030128, 2.930437177449687, 3.2188549365959567, 4.868949596457552];
+        
+        window.addEventListener('scroll', function(ev) {
+            if (CSS.supports('scroll-snap-align: start')) {
+                
+            } else {
+                return false;
+            }
+        });
+
+        function changeYear(year) {
+            document.querySelector('#select-year').value = document.querySelector('#select-year').value == year ? 'average' : year;
+            document.querySelector('#select-year').dispatchEvent(new Event('change'));
+        }
+        
+        function selectYear(year) {
+            document.getElementById('donut_asia').style.opacity = year == 'average' || year == 2015 ? 1 : 0.5;
+            document.getElementById('donut_europe').style.opacity = year == 'average' || year == 2016 ? 1 : 0.5;
+            document.getElementById('donut_africa').style.opacity = year == 'average' || year == 2017 ? 1 : 0.5;
+
+            map_view.signal("selected_year", year);
+            map_view.runAsync();
+            network_view.signal("selected_year", year);
+            network_view.runAsync();
+        }
+
+        function changeContinent(continent) {
+            donAsia_view.signal("selected_continent", continent);
+            donAsia_view.runAsync();
+            donEurope_view.signal("selected_continent", continent);
+            donEurope_view.runAsync();
+            donAfrica_view.signal("selected_continent", continent);
+            donAfrica_view.runAsync();
+            map_view.signal("selected_continent", continent);
+            map_view.runAsync();
+            network_view.signal("selected_continent", continent);
+            network_view.runAsync();
+            causes_view.signal("selected_continent", continent);
+            causes_view.runAsync();
+            diverging_view.signal("selected_continent", continent);
+            diverging_view.runAsync();
+            heat_view.signal("selected_continent", continent);
+            heat_view.runAsync();
+
+
+            var i = full_continents.indexOf(continent);
+            var finalScale = zoom_lvls[i];
+            var finalRotateX = rotateX_values[i];
+            var finalCenterY = centreY_values[i];
+
+
+                    map_view.signal("scale", finalScale);
+                    map_view.signal("rotateX", finalRotateX);
+                    map_view.signal("centerY", finalCenterY);
   
-<div id="choropleth_map"></div>
+            
+            var i = continents.indexOf(continent);
+            if (i >= 0)
+            {
+                $('.carousel').carousel(i);
+                $('.carousel').carousel('pause');
+            }
+            else
+                $('.carousel').carousel('cycle');
 
-<div id="scatter_plot"></div>
+            document.getElementById('network').style.display = continent == 'All' ? 'none' : 'block';
+            if (continent == 'All') $('#network').parent().removeClass('scroll-snap-parent');
+            else $('#network').parent().addClass('scroll-snap-parent');
+            document.getElementById('continent-name').innerText = continent == 'All' ? 'Malaysia' : continent;
+        }
 
-<div id="waffle_chart"></div>
+        function selectRivers(category) {
+            map_view.signal("clicked", category);
+            map_view.runAsync();
+            network_view.signal("clicked", category);
+            network_view.runAsync();
+        }
 
-<div id="stacked_barchart"></div>
+        var donAsia = "js/donut_asia.vg.json";
+        vegaEmbed('#donut_asia', donAsia).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view});
+            donAsia_view = result.view;
+        }).catch(console.error);
 
-<div id="bar_cases"></div>
+        var donEurope = "js/donut_europe.vg.json";
+        vegaEmbed('#donut_europe', donEurope).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            donEurope_view = result.view;
+        }).catch(console.error);
 
-<script type="text/javascript">
+        var donAfrica = "js/donut_africa.vg.json";
+        vegaEmbed('#donut_africa', donAfrica).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            donAfrica_view = result.view;
+        }).catch(console.error);
 
-  var spec2 = "js/choropleth_map.vg.json";
-  vegaEmbed('#choropleth_map', spec2).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
+        var donAustralia = "js/donut_australia.vg.json";
+        vegaEmbed('#donut_australia', donAustralia).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            donAustralia_view = result.view;
+        }).catch(console.error);
 
-  var spec3 = "js/scatter_plot.vg.json";
-  vegaEmbed('#scatter_plot', spec3).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
+        var donSouth = "js/donut_south.vg.json";
+        vegaEmbed('#donut_south', donSouth).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            donSouth_view = result.view;
+        }).catch(console.error);
 
-  var spec4 = "js/waffle_chart.vg.json";
-  vegaEmbed('#waffle_chart', spec4).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
+        var donNorth = "js/donut_north.vg.json";
+        vegaEmbed('#donut_north', donNorth).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            donNorth_view = result.view;
+        }).catch(console.error);
 
-  var spec5 = "js/diverging_stacked_barchart.vg.json";
-  vegaEmbed('#stacked_barchart', spec5).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
+        var spec = "js/choropleth_map.vg.json";
+        vegaEmbed('#map', spec).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            map_view = result.view;
+        }).catch(console.error);
 
-  var spec6 = "js/bar_cases.vg.json";
-  vegaEmbed('#bar_cases', spec6).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
-  
+        var vis1 = "js/area_diverge.vg.json"
+        vegaEmbed('#area_timeline_filt', vis1, {"actions": false}).then(function(result) {}).catch(console.error);
+
+        var vis2 = "js/bar_cases_from.vg.json"
+        vegaEmbed('#bar_cases_from', vis2, {"actions": false}).then(function(result) {}).catch(console.error);
+
+        var vis3 = "js/waffle_chart.vg.json";
+        vegaEmbed('#waffle_chart', vis3).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        var vis4 = "js/radial_death_attr.vg.json"
+        vegaEmbed('#deaths_radial', vis4, {"actions": false}).then(function(result) {}).catch(console.error);
+
 </script>
-
 </body>
 </html>
