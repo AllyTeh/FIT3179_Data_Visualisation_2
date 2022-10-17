@@ -233,7 +233,7 @@
                             </p>
                         </div>
                         <div class="vax-info-section">
-                            <div class="vis-wrapper" id="deaths_radial"></div>
+                            <div class="vis-wrapper" id="age_radial"></div>
                             <div class="vis-wrapper" id="waffle_chart"></div>
                         </div>
 
@@ -411,8 +411,8 @@
             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
-        var vis4 = "js/radial_death_attr.vg.json"
-        vegaEmbed('#deaths_radial', vis4, {"actions": false}).then(function(result) {}).catch(console.error);
+        var vis4 = "js/radial_age.vg.json"
+        vegaEmbed('#age_radial', vis4, {"actions": false}).then(function(result) {}).catch(console.error);
 
 </script>
 </body>
