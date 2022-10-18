@@ -470,7 +470,7 @@
                     "title": "Drag to filter out an interval",
                     "mark": {
                         "type": "bar",
-                        "color": "#ffcd73",
+                        "color": "#ffb27b",
                         "cursor": "col-resize"
                     },
                     "params": [

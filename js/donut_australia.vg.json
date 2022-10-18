@@ -24,9 +24,9 @@
       {
         "name": "table",
         "values": [
-          {"id": 1, "field": 139},
+          {"id": 1, "field": 121},
           {"id": 2, "field": 0},
-          {"id": 3, "field": 2}
+          {"id": 3, "field": 20}
         ],
         "transform": [
           {

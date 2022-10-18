@@ -24,9 +24,9 @@
       {
         "name": "table",
         "values": [
-          {"id": 1, "field": 20515},
-          {"id": 2, "field": 0},
-          {"id": 3, "field": 71}
+          {"id": 1, "field": 19015},
+          {"id": 2, "field": 1400},
+          {"id": 3, "field": 171}
         ],
         "transform": [
           {
@@ -96,7 +96,7 @@
             "align": {"value": "center"},
             "baseline": {"value": "middle"},
             "fontSize": {"value": 20},
-            "text": {"value": "South America"}
+            "text": {"value": "Europe"}
           }
         }
         },
