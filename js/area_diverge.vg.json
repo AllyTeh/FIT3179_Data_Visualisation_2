@@ -60,7 +60,7 @@
                             "field": "cases_new",
                             "type": "quantitative",
                             "axis": {
-                                "title": "Daily New Cases (Malaysia)",
+                                "title": "Daily New Cases",
                                 "labelFont": "Roboto",
                                 "labelFontSize": 15,
                                 "titleFont": "Roboto",
@@ -107,7 +107,7 @@
                             "field": "cases_recovered",
                             "type": "quantitative",
                             "axis": {
-                                "title": "Daily New Cases (Malaysia)",
+                                "title": "Daily New Cases",
                                 "labelFont": "Roboto",
                                 "labelFontSize": 15,
                                 "titleFont": "Roboto",
