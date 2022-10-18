@@ -73,7 +73,7 @@
             "fields": ["Confirmed_Cases"]
           }
         },
-        {"calculate": "datum.Confirmed_Cases", "as": "Confirmed Cases"}
+        {"calculate": "datum.Confirmed_Cases + 0", "as": "Confirmed Cases"}
       ],
       "mark": {"type": "geoshape"},
       "encoding": {
