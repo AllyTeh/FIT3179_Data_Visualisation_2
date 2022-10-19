@@ -1,186 +1,101 @@
-Country,Active,Population
-Afghanistan,5166,35383032
-Albania,5409,2886438
-Algeria,13975,40551392
-Andorra,827,"77,265"
-Angola,3312,28842489
-Antigua and Barbuda,11,94527
-Argentina,150837,43508460
-Armenia,8949,2936143
-Australia,1378,24262712
-Austria,10742,8747301
-Azerbaijan,1909,9736043
-Bahamas,2102,377930
-Bahrain,4206,1425792
-Bangladesh,80208,157977153
-Barbados,16,285796
-Belarus,5043,9445643
-Belgium,126554,11354420
-Belize,905,368400
-Benin,397,10872063
-Bhutan,19,736708
-Bolivia,29385,11031814
-Bosnia and Herzegovina,6048,3386266
-Botswana,2367,2159927
-Brazil,403395,206163053
-Brunei,0,419800
-Bulgaria,7610,7151953
-Burkina Faso,668,18646357
-Burma,18416,54410000
-Burundi,44,10487995
-Cabo Verde,869,555988
-Cambodia,6,15766292
-Cameroon,663,23926551
-Canada,19250,36382944
-Central African Republic,2868,4537686
-Chad,96,14561660
-Chile,14269,18209068
-China,381,1414049351
-Colombia,91956,48175052
-Comoros,13,795592
-Congo ,323,89560000
-Costa Rica,33694,4899345
-Cote d'Ivoire,256,23822714
-Croatia,2662,4208602
-Cuba,385,11335104
-Cyprus,517,1170187
-Czechia,58148,10700000
-Denmark,5446,5711349
-Djibouti,7,929112
-Dominica,8,71307
-Dominican Republic,22220,10397741
-Ecuador,14129,16491116
-Egypt,704,94447073
-El Salvador,4069,6356143
-Equatorial Guinea,86,1215180
-Eritrea,42,3376557
-Estonia,832,1316510
-Eswatini,265,1113997
-Ethiopia,44469,103603462
-Fiji,2,872399
-Finland,3003,5497713
-France,596601,64667596
-Gabon,592,2007873
-Gambia,971,2149136
-Georgia,5074,4015450
-Germany,38909,82193768
-Ghana,301,28481945
-Greece,20295,10615185
-Grenada,0,110261
-Guatemala,8133,16583076
-Guinea,623,11738429
-Guinea-Bissau,617,1782438
-Guyana,999,771368
-Haiti,1526,10839970
-Holy See,0,825
-Honduras,48711,9270795
-Hungary,25980,9752975
-Iceland,984,332206
-India,867496,1324517249
-Indonesia,65706,261556381
-Iran,64010,79563989
-Iraq,58004,36610632
-Ireland,16526,4695779
-Israel,62209,8108985
-Italy,74829,60663060
-Jamaica,4279,2906236
-Japan,6539,127763265
-Jordan,17772,9554286
-Kazakhstan,3031,17830901
-Kenya,8522,49051534
-South Korea,1481,50983457
-Kosovo,1203,1873000
-Kuwait,7191,3956875
-Kyrgyzstan,3615,6074330
-Laos,1,6845846
-Latvia,1234,1974266
-Lebanon,29384,6714281
-Lesotho,832,2075030
-Liberia,36,4586787
-Libya,17272,6492162
-Liechtenstein,24,38137
-Lithuania,3109,2889557
-Luxembourg,1091,579264
-Madagascar,453,24894370
-Malawi,997,17205261
-Malaysia,4161,30684654
-Maldives,1142,475512
-Mali,616,17965443
-Malta,703,436097
-Mauritania,121,4163533
-Mauritius,27,1261865
-Mexico,41309,123333376
-Moldova,16322,4066009
-Monaco,22,#N/A
-Mongolia,5,3056364
-Montenegro,4014,627264
-Morocco,22415,35126283
-Mozambique,2571,27829938
-Namibia,1956,2358044
-Nepal,30818,27263433
-Netherlands,162509,16981295
-New Zealand,45,4659265
-Nicaragua,886,6303974
-Niger,9,20788798
-Nigeria,7277,185960241
-North Macedonia,3671,2080743
-Norway,3328,5250949
-Oman,11389,4479219
-Pakistan,8904,203631353
-Panama,21632,4037078
-Papua New Guinea,10,8271762
-Paraguay,16562,6777872
-Peru,79865,30926032
-Philippines,54594,103663816
-Poland,39684,37989220
-Portugal,30704,10325538
-Qatar,2792,2654374
-Romania,30417,19796285
-Russia,244003,145275383
-Rwanda,1296,11668827
-Saint Kitts and Nevis,1,51625
-Saint Lucia,2,180024
-Saint Vincent and the Grenadines,0,109459
-San Marino,17,33938
-Sao Tome and Principe,17,203227
-Saudi Arabia,9189,32443447
-Senegal,1732,14993519
-Serbia,33923,8853963
-Seychelles,4,95710
-Sierra Leone,503,7328834
-Singapore,141,5653634
-Slovakia,13183,5442003
-Slovenia,3061,2074210
-Somalia,669,14185636
-South Africa,51070,56207646
-South Sudan,1417,10832518
-Spain,677807,46634140
-Sri Lanka,1309,21021171
-Sudan,6070,39847439
-Suriname,98,564888
-Sweden,92557,9836007
-Switzerland,9880,8379917
-Syria,3181,17465575
-Taiwan,32,23618200
-Tajikistan,1095,8663579
-Tanzania,305,53049230
-Thailand,126,68971308
-Timor-Leste,0,1219288
-Togo,442,7509951
-Trinidad and Tobago,1732,1377560
-Tunisia,25771,11303945
-Turkey,32108,79827871
-Uganda,3586,39649166
-Ukraine,141234,44713702
-United Arab Emirates,8717,9360980
-United Kingdom,548220,66297944
-Uruguay,288,3424129
-United States of America,4440581,323015995
-Uzbekistan,2570,31441751
-Venezuela,7843,29851255
-Vietnam,48,93640422
-West Bank and Gaza,6327,3000021
-Western Sahara,1,538749
-Yemen,127,27168208
-Zambia,537,16363458
-Zimbabwe,1288,14030331
+row ,column ,percentage,Type
+1,1,0.01,Full
+1,2,0.02,Full
+1,3,0.03,Full
+1,4,0.04,Full
+1,5,0.05,Full
+1,6,0.06,Full
+1,7,0.07,Full
+1,8,0.08,Full
+1,9,0.09,Full
+1,10,0.1,Full
+2,1,0.11,Full
+2,2,0.12,Full
+2,3,0.13,Full
+2,4,0.14,Full
+2,5,0.15,Full
+2,6,0.16,Full
+2,7,0.17,Full
+2,8,0.18,Full
+2,9,0.19,Full
+2,10,0.2,Full
+3,1,0.21,Full
+3,2,0.22,Full
+3,3,0.23,Full
+3,4,0.24,Full
+3,5,0.25,Full
+3,6,0.26,Full
+3,7,0.27,Full
+3,8,0.28,Full
+3,9,0.29,Full
+3,10,0.3,Full
+4,1,0.31,Full
+4,2,0.32,Full
+4,3,0.33,Full
+4,4,0.34,Full
+4,5,0.35,Full
+4,6,0.36,Full
+4,7,0.37,Full
+4,8,0.38,Full
+4,9,0.39,Full
+4,10,0.4,Full
+5,1,0.41,Full
+5,2,0.42,Full
+5,3,0.43,Full
+5,4,0.44,Full
+5,5,0.45,Full
+5,6,0.46,Full
+5,7,0.47,Full
+5,8,0.48,Full
+5,9,0.49,Full
+5,10,0.5,Full
+6,1,0.51,Full
+6,2,0.52,Full
+6,3,0.53,Full
+6,4,0.54,Full
+6,5,0.55,Full
+6,6,0.56,Full
+6,7,0.57,Full
+6,8,0.58,Full
+6,9,0.59,Full
+6,10,0.6,Full
+7,1,0.61,Partial
+7,2,0.62,Partial
+7,3,0.63,Partial
+7,4,0.64,Partial
+7,5,0.65,Partial
+7,6,0.66,Full
+7,7,0.67,Full
+7,8,0.68,Full
+7,9,0.69,Full
+7,10,0.7,Full
+8,1,0.71,Partial
+8,2,0.72,Partial
+8,3,0.73,Partial
+8,4,0.74,Partial
+8,5,0.75,Partial
+8,6,0.76,Partial
+8,7,0.77,Non-vax
+8,8,0.78,Non-vax
+8,9,0.79,Non-vax
+8,10,0.8,Non-vax
+9,1,0.81,Non-vax
+9,2,0.82,Non-vax
+9,3,0.83,Non-vax
+9,4,0.84,Non-vax
+9,5,0.85,Non-vax
+9,6,0.86,Non-vax
+9,7,0.87,Non-vax
+9,8,0.88,Non-vax
+9,9,0.89,Non-vax
+9,10,0.9,Non-vax
+10,1,0.91,Non-vax
+10,2,0.92,Non-vax
+10,3,0.93,Non-vax
+10,4,0.94,Non-vax
+10,5,0.95,Non-vax
+10,6,0.96,Non-vax
+10,7,0.97,Non-vax
+10,8,0.98,Non-vax
+10,9,0.99,Non-vax
+10,10,1,Non-vax
